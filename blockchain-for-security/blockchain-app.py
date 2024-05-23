@@ -37,5 +37,6 @@ class Blockchain:
         return self.chain[-1]
     
     def hash(block):
-        pass
+        block_string = json.dumps(block, sort_keys=True).encode()
+        return hashlib.sha256(block_string).hexdigest()
 
