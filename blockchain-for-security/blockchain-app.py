@@ -4,14 +4,25 @@ from time import time
 
 class Blockchain:
     def __init__(self):
+        self.current_transactions = []
         self.chain = []
         self.nodes = set()
         
         # Create first block aka genesis block
         self.create_block(proof=1, previous_hash=1)
         
+    
     def create_block(self, proof, previous_hash):
-        pass
+        block = {
+            'index': len(self.chain) + 1,
+            'timestamp': time(),
+            'transactions': self.current_transactions,
+            'proof': proof,
+            'previous_hash': previous_hash or self.hash(self.chain[-1]),
+        }
+        self.current_transactions = []
+        self.chain.append(block)
+        return block
     
     def create_transaction(self, sender, recipient, amount):
         pass
