@@ -33,9 +33,9 @@ class Blockchain:
         })
         return self.last_block['index'] + 1  
       
-      
+    def last_block(self):
+        return self.chain[-1]
+    
     def hash(block):
         pass
 
-    def last_block(self):
-        pass
