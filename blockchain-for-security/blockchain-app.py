@@ -12,3 +12,9 @@ class Blockchain:
         
     def create_block(self, proof, previous_hash):
         pass
+    
+    def create_transaction(self, sender, recipient, amount):
+        pass
+    
+    def hash(block):
+        pass
