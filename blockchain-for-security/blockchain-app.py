@@ -24,8 +24,18 @@ class Blockchain:
         self.chain.append(block)
         return block
     
-    def create_transaction(self, sender, recipient, amount):
-        pass
     
+    def create_transaction(self, sender, recipient, amount):
+        self.current_transactions.append({
+            'sender': sender,
+            'recipient': recipient,
+            'amount': amount,
+        })
+        return self.last_block['index'] + 1  
+      
+      
     def hash(block):
+        pass
+
+    def last_block(self):
         pass
