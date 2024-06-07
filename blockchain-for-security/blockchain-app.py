@@ -52,3 +52,16 @@ class Blockchain:
         guess = f'{prev_proof}{proof}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
         return guess_hash[:4] == "0000"
+    
+    def valid_chain(self, chain):
+        prev_block = chain[0]
+        index = 1
+        while index < len(chain):
+            block = chain[index]
+            if block['previous_hash'] != self.hash(prev_block):
+                return False
+            if not self.valid_proof(prev_block['proof'], block['proof']):
+                return False
+            prev_block = block
+            index += 1
+        return True
